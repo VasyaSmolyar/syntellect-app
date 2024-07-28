@@ -1,11 +1,11 @@
-import { observer } from "mobx-react"
-import TextStore from 'store/textStore'
+import { observer } from "mobx-react";
+import TextStore from 'store/textStore';
+import { Grid, Button, TextField } from '@mui/material';
 
 interface CallbackButton {
   text: string;
   callback: () => void;
 }
-
 
 interface TextControlProps {
   textController: TextStore;
@@ -14,25 +14,31 @@ interface TextControlProps {
 }
 
 const TextControl = observer(({ textController, leftButtons, rightButtons }: TextControlProps) => {
-
   return (
-    <div>
-      <div>
+    <Grid container spacing={2}>
+      <Grid item xs={4}>
         {leftButtons.map((el, i) => (
-          <button key={i} onClick={el.callback}>
+          <Button key={i} variant="contained" color="primary" onClick={el.callback}>
             {el.text}
-          </button>
+          </Button>
         ))}
-      </div>
-      <input value={textController.text} onChange={(e) => textController.setText(e.target.value)} /> 
-      <div>
+      </Grid>
+      <Grid item xs={4}>
+        <TextField
+          value={textController.text}
+          onChange={(e: { target: { value: string; }; }) => textController.setText(e.target.value)}
+          variant="outlined"
+          fullWidth
+        />
+      </Grid>
+      <Grid item xs={4}>
         {rightButtons.map((el, i) => (
-          <button key={i} onClick={el.callback}>
+          <Button key={i} variant="contained" color="primary" onClick={el.callback}>
             {el.text}
-          </button>
+          </Button>
         ))}
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 });
 
