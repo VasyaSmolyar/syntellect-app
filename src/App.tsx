@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import { textController, secondTextController } from 'store/textStore';
 import TextControl from "components/TextControl";
+import AutoCompleteControl from "components/AutoCompleteControl";
+import { countriesController, secondCountriesController } from "store/countryStore";
 
 function App() {
   return (
@@ -31,6 +33,14 @@ function App() {
             }
           }}
         ]}
+      />
+      <AutoCompleteControl 
+        limit={3}
+        countryController={countriesController}
+      />
+      <AutoCompleteControl 
+        limit={10}
+        countryController={secondCountriesController}
       />
     </div>
   );
