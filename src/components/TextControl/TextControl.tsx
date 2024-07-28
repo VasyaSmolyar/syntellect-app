@@ -15,8 +15,8 @@ interface TextControlProps {
 
 const TextControl = observer(({ textController, leftButtons, rightButtons }: TextControlProps) => {
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={4}>
+    <Grid container spacing={2} justifyContent="center" alignItems="center">
+      <Grid item xs={4} container justifyContent="center" alignItems="center">
         {leftButtons.map((el, i) => (
           <Button key={i} variant="contained" color="primary" onClick={el.callback}>
             {el.text}
@@ -31,7 +31,7 @@ const TextControl = observer(({ textController, leftButtons, rightButtons }: Tex
           fullWidth
         />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={4} container justifyContent="center" alignItems="center">
         {rightButtons.map((el, i) => (
           <Button key={i} variant="contained" color="primary" onClick={el.callback}>
             {el.text}
